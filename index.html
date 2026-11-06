@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Deutsch A1 – de zéro à A1</title>
+<style>
+:root{--bg:#eef2f7;--card:#fff;--tx:#0f1b2d;--mu:#5b6b82;--bd:#d5dde8;--pri:#0f1b2d;--pt:#fff;--hl:#ffc400;--ok:#137a4b;--okb:#e2f4ea;--ko:#c0283a;--kob:#fbe6e9;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0c1320;--card:#16202f;--tx:#e8edf5;--mu:#93a3ba;--bd:#27344a;--pri:#ffc400;--pt:#0f1b2d;--ok:#4cc38a;--okb:#12382a;--ko:#ff7b8a;--kob:#3d1a22;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0c1320;--card:#16202f;--tx:#e8edf5;--mu:#93a3ba;--bd:#27344a;--pri:#ffc400;--pt:#0f1b2d;--ok:#4cc38a;--okb:#12382a;--ko:#ff7b8a;--kob:#3d1a22;color-scheme:dark}
+*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+#app{max-width:560px;margin:0 auto;padding:16px 14px 40px}
+h1{font-size:34px;line-height:1.1;margin:8px 0 4px;letter-spacing:-.02em}h2{font-size:22px;margin:8px 0 12px}
+.mu{color:var(--mu)}small{font-size:12px}
+button{font:inherit;color:inherit;cursor:pointer;border:0;background:none}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:14px;margin:10px 0}
+.row{display:flex;gap:12px;align-items:center;width:100%;text-align:left}
+.row .gr{flex:1}.em{font-size:26px;width:34px;text-align:center}
+.bar{height:6px;background:var(--bd);border-radius:3px;margin-top:6px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--hl)}
+.back{padding:6px 0;color:var(--mu)}
+.tabs{display:flex;gap:6px;overflow-x:auto;margin-bottom:8px}
+.tabs button{flex:1;min-width:64px;padding:8px 4px;border-radius:10px;border:1px solid var(--bd);background:var(--card);display:flex;flex-direction:column;align-items:center}
+.tabs button.on{border-color:var(--tx);box-shadow:inset 0 -3px 0 var(--hl)}
+.note{border-left:4px solid var(--hl)}
+.de{font-size:28px;font-weight:800;line-height:1.2;margin:8px 0;background:linear-gradient(transparent 62%,var(--hl) 62%);display:inline}
+.opt{display:block;width:100%;text-align:left}
+.opt.good,.fb.good{background:var(--okb);border-color:var(--ok)}.opt.bad,.fb.bad{background:var(--kob);border-color:var(--ko)}
+.fb{padding:12px;border:1px solid;border-radius:12px;margin:10px 0}
+.pri,.big{display:block;width:100%;background:var(--pri);color:var(--pt);padding:14px;border-radius:12px;font-weight:700;margin:10px 0}
+.sm{display:block;width:100%;padding:12px;border-radius:12px;border:1px solid var(--bd);background:var(--card);margin:8px 0}
+input{width:100%;font:inherit;font-size:20px;padding:12px;border-radius:12px;border:2px solid var(--bd);background:var(--card);color:var(--tx);margin:8px 0}
+.keys{display:flex;gap:8px}.keys button{flex:1;padding:10px;font-size:20px;border:1px solid var(--bd);border-radius:10px;background:var(--card)}
+button:focus-visible,input:focus-visible{outline:3px solid var(--hl);outline-offset:2px}
+</style></head><body><div id="app"></div>
+<script>
+const U=[
+{t:"Salutations",e:"👋",n:"Tous les noms allemands prennent une majuscule. Le « ß » se dit « ss ». « ei » se dit « aï », « ie » se dit « i », « ch » est un souffle de gorge. Pour dire bonjour : « Guten Morgen » le matin, « Guten Tag » dans la journée.",w:[["Hallo","Salut / Bonjour (familier)"],["Guten Morgen","Bonjour (le matin)"],["Guten Tag","Bonjour (la journée)"],["Guten Abend","Bonsoir"],["Gute Nacht","Bonne nuit"],["Auf Wiedersehen","Au revoir"],["Tschüss","Salut (pour partir)"],["Danke","Merci"],["Bitte","S’il vous plaît / De rien"],["Entschuldigung","Excusez-moi"],["Ja","Oui"],["Nein","Non"]]},
+{t:"Se présenter",e:"🙋",n:"Le verbe est toujours en 2e position : « Ich komme aus Kamerun ». Terminaisons : ich -e, du -st, er/sie -t, wir -en, Sie -en. « Sie » (avec majuscule) = vous de politesse, « du » = tu.",w:[["Ich heiße Paul.","Je m’appelle Paul."],["Wie heißen Sie?","Comment vous appelez-vous ?"],["Ich komme aus Kamerun.","Je viens du Cameroun."],["Woher kommen Sie?","D’où venez-vous ?"],["Ich wohne in Douala.","J’habite à Douala."],["Ich bin 25 Jahre alt.","J’ai 25 ans."],["Wie geht es Ihnen?","Comment allez-vous ?"],["Es geht mir gut.","Je vais bien."],["Ich spreche Französisch.","Je parle français."],["Freut mich.","Enchanté."]]},
+{t:"Les nombres",e:"🔢",n:"« z » se dit « ts » : zwei = tsvaï. « sechs » = zèks. À partir de 21, on dit l’unité d’abord : 21 = einundzwanzig (un-et-vingt). Apprenez 1 à 10, puis 20 et 100.",w:[["eins","un (1)"],["zwei","deux (2)"],["drei","trois (3)"],["vier","quatre (4)"],["fünf","cinq (5)"],["sechs","six (6)"],["sieben","sept (7)"],["acht","huit (8)"],["neun","neuf (9)"],["zehn","dix (10)"],["zwanzig","vingt (20)"],["hundert","cent (100)"]]},
+{t:"Jours et heure",e:"📅",n:"Tous les jours sont masculins : « der Montag ». « am Montag » = lundi (le lundi). Pour l’heure : « Wie spät ist es? » puis « Es ist drei Uhr » (il est 3 heures).",w:[["Montag","lundi"],["Dienstag","mardi"],["Mittwoch","mercredi"],["Donnerstag","jeudi"],["Freitag","vendredi"],["Samstag","samedi"],["Sonntag","dimanche"],["heute","aujourd’hui"],["morgen","demain"],["Wie spät ist es?","Quelle heure est-il ?"]]},
+{t:"Famille et métier",e:"👪",n:"Trois genres : der (masculin), die (féminin), das (neutre). Apprenez toujours le nom avec son article. Au pluriel, l’article est toujours « die ».",w:[["die Mutter","la mère"],["der Vater","le père"],["der Bruder","le frère"],["die Schwester","la sœur"],["das Kind","l’enfant"],["der Freund","l’ami"],["die Freundin","l’amie"],["der Lehrer","l’enseignant"],["Ich bin Techniker.","Je suis technicien."],["Ich arbeite in einer Firma.","Je travaille dans une entreprise."]]},
+{t:"Achats et nourriture",e:"🛒",n:"« Ich möchte… » = je voudrais (poli). Négation : « kein/keine » nie un nom (Ich habe kein Brot), « nicht » nie le reste (Ich komme nicht).",w:[["das Brot","le pain"],["das Wasser","l’eau"],["der Reis","le riz"],["der Fisch","le poisson"],["das Fleisch","la viande"],["Ich möchte Wasser.","Je voudrais de l’eau."],["Was kostet das?","Combien ça coûte ?"],["Das ist teuer.","C’est cher."],["Das ist billig.","C’est bon marché."],["Ich nehme das.","Je prends ça."]]},
+{t:"Lieux et directions",e:"📍",n:"« Wo ist… ? » = où est… ? On répond avec « links », « rechts », « geradeaus ». « der Bahnhof » = la gare (le bâtiment des trains).",w:[["Wo ist der Bahnhof?","Où est la gare ?"],["links","à gauche"],["rechts","à droite"],["geradeaus","tout droit"],["die Straße","la rue"],["der Flughafen","l’aéroport"],["die Schule","l’école"],["das Krankenhaus","l’hôpital"],["die Bank","la banque"],["Ich suche die Post.","Je cherche la poste."]]},
+{t:"Verbes utiles",e:"💬",n:"Avec « können » (pouvoir), « müssen » (devoir), « wollen » (vouloir), le 2e verbe va à la fin : « Ich kann Deutsch sprechen ». Ces phrases vous sauvent en conversation.",w:[["Ich verstehe nicht.","Je ne comprends pas."],["Noch einmal, bitte.","Encore une fois, s’il vous plaît."],["Langsam, bitte.","Lentement, s’il vous plaît."],["Ich lerne Deutsch.","J’apprends l’allemand."],["Ich kann Deutsch sprechen.","Je peux parler allemand."],["Ich muss arbeiten.","Je dois travailler."],["Ich will studieren.","Je veux étudier."],["Ich habe Hunger.","J’ai faim."],["Ich habe einen Termin.","J’ai un rendez-vous."]]}
+];
+const $=s=>document.querySelector(s),app=$("#app");
+let P={};try{P=JSON.parse(localStorage.getItem("a1")||"{}")}catch(e){}
+const save=()=>{try{localStorage.setItem("a1",JSON.stringify(P))}catch(e){}};
+const M=[["lesson","📖","Leçon"],["listen","🎧","Écouter"],["read","👀","Lire"],["write","✍️","Écrire"],["speak","🗣️","Parler"]],Q=M.slice(1);
+let voice=null;
+function pick(){try{voice=speechSynthesis.getVoices().find(x=>/^de/i.test(x.lang))||null}catch(e){}}
+try{pick();speechSynthesis.onvoiceschanged=pick}catch(e){}
+function say(t){try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t);u.lang="de-DE";if(voice)u.voice=voice;u.rate=.8;speechSynthesis.speak(u)}catch(e){}}
+const sh=a=>a.map(x=>[Math.random(),x]).sort((a,b)=>a[0]-b[0]).map(x=>x[1]);
+const nm=s=>s.toLowerCase().replace(/ß/g,"ss").normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[^a-z0-9 ]/g," ").replace(/\s+/g," ").trim();
+const pc=u=>Q.reduce((s,m)=>s+((P[u]||{})[m[0]]||0),0)/(Q.length*100);
+
+function home(){
+  const tot=Math.round(U.reduce((s,_,i)=>s+pc(i),0)/U.length*100);
+  app.innerHTML=`<h1>Deutsch A1</h1><p class="mu">De zéro à A1 : comprendre, écouter, parler, écrire.</p>
+  <div class="card"><b>Progression : ${tot} %</b><div class="bar"><i style="width:${tot}%"></i></div><small class="mu">Chaque unité a 4 exercices. Obtenez 80 % ou plus pour les valider.</small></div>`
+  +U.map((u,i)=>`<button class="card row" onclick="unit(${i})"><span class="em">${u.e}</span><span class="gr"><b>Unité ${i+1} : ${u.t}</b><div class="bar"><i style="width:${Math.round(pc(i)*100)}%"></i></div></span></button>`).join("")
+  +`<p class="mu">Rythme conseillé : 1 h 30 à 2 h par jour, une unité par semaine.</p>`;
+  scrollTo(0,0)}
+function unit(i,m="lesson"){
+  const u=U[i];
+  app.innerHTML=`<button class="back" onclick="home()">← Unités</button><h2>${u.e} ${u.t}</h2><div class="tabs">${M.map(x=>`<button class="${x[0]==m?"on":""}" onclick="unit(${i},'${x[0]}')">${x[1]}<small>${x[2]}</small></button>`).join("")}</div><div id="v"></div>`;
+  if(m=="lesson")lesson(i);else quiz(i,m);scrollTo(0,0)}
+function lesson(i){
+  const u=U[i];
+  $("#v").innerHTML=`<div class="card note">${u.n}</div>`+u.w.map((w,k)=>`<button class="card row" onclick="say(U[${i}].w[${k}][0])"><span class="em">🔊</span><span class="gr"><b>${w[0]}</b><div class="mu">${w[1]}</div></span></button>`).join("")
+  +`<p class="mu">Touchez une ligne pour écouter. Répétez chaque phrase 3 fois à voix haute. Si aucun son : installez la voix allemande dans les réglages de synthèse vocale de votre téléphone.</p>`}
+
+let S;
+function quiz(i,m){S={i,m,q:sh(U[i].w).slice(0,8),k:0,ok:0,d:0};ask()}
+function ask(){
+  const{i,m,q,k}=S;if(k>=q.length)return end();
+  const w=q[k],u=U[i];let h=`<div class="mu">Question ${k+1} sur ${q.length}</div><div class="card">`;
+  if(m=="listen"||m=="read"){
+    h+=(m=="listen"?`<p>Écoutez, puis choisissez le sens :</p><button class="sm" onclick="say(S.q[S.k][0])">🔊 Écouter</button>`:`<p>Que veut dire :</p><div class="de">${w[0]}</div><button class="sm" onclick="say(S.q[S.k][0])">🔊 Écouter</button>`)+`</div>`;
+    S.o=sh([w[1],...sh(u.w.filter(x=>x[1]!=w[1])).slice(0,3).map(x=>x[1])]);
+    h+=S.o.map((t,j)=>`<button class="card opt" onclick="pk(${j})">${t}</button>`).join("");
+    $("#v").innerHTML=h;if(m=="listen")setTimeout(()=>say(w[0]),300)}
+  else if(m=="write"){
+    h+=`<p>Écrivez en allemand :</p><div class="de">${w[1]}</div></div><input id="in" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Votre réponse"><div class="keys">${["ä","ö","ü","ß"].map(c=>`<button onclick="ins('${c}')">${c}</button>`).join("")}</div><button class="pri" onclick="chk()">Valider</button>`;
+    $("#v").innerHTML=h}
+  else{
+    h+=`<p>Écoutez, puis dites à voix haute :</p><div class="de">${w[0]}</div><div class="mu">${w[1]}</div></div><button class="sm" onclick="say(S.q[S.k][0])">🔊 Écouter le modèle</button><button class="big" onclick="rec()">🎤 Parler</button><div id="heard" class="mu"></div><div id="self"></div>`;
+    $("#v").innerHTML=h}}
+function fb(g,t){if(S.d)return;S.d=1;if(g)S.ok++;
+  $("#v").insertAdjacentHTML("beforeend",`<div class="fb ${g?"good":"bad"}">${g?"✅ Correct !":"❌ Pas tout à fait."} <b>${t}</b></div><button class="pri" onclick="nx()">Suivant</button>`)}
+function nx(){S.k++;S.d=0;ask()}
+function pk(j){if(S.d)return;const w=S.q[S.k];fb(S.o[j]==w[1],w[0]+" = "+w[1]);
+  document.querySelectorAll(".opt").forEach((b,x)=>{if(S.o[x]==w[1])b.classList.add("good");else if(x==j)b.classList.add("bad")});say(w[0])}
+function ins(c){const e=$("#in");e.value+=c;e.focus()}
+function chk(){if(S.d)return;const w=S.q[S.k];fb(nm($("#in").value)==nm(w[0]),w[0]);say(w[0])}
+function selfck(m){$("#self").innerHTML=`<p class="mu">${m} Auto-évaluation :</p><button class="pri" onclick="fb(1,'Bien joué')">Je l’ai bien dit</button><button class="sm" onclick="fb(0,S.q[S.k][0])">À refaire</button>`}
+function rec(){
+  if(S.d)return;const R=window.SpeechRecognition||window.webkitSpeechRecognition,w=S.q[S.k];
+  if(!R)return selfck("Le micro n’est pas pris en charge ici.");
+  try{const r=new R();r.lang="de-DE";r.maxAlternatives=3;
+    r.onresult=e=>{const a=[...e.results[0]].map(x=>x.transcript),t=nm(w[0]).split(" ");let b=0;
+      a.forEach(x=>{const s=nm(x).split(" ");b=Math.max(b,t.filter(y=>s.includes(y)).length/t.length)});
+      $("#heard").textContent="J’ai entendu : "+a[0];fb(b>=.75,w[0])};
+    r.onerror=()=>selfck("Micro indisponible (autorisation refusée ?).");
+    $("#heard").textContent="Je vous écoute…";r.start()}catch(e){selfck("Micro indisponible.")}}
+function end(){
+  const p=Math.round(S.ok/S.q.length*100);P[S.i]=P[S.i]||{};P[S.i][S.m]=Math.max(P[S.i][S.m]||0,p);save();
+  $("#v").innerHTML=`<div class="card"><h2>${p>=80?"🎉 Bravo !":"💪 Continuez"}</h2><p>Score : ${S.ok} sur ${S.q.length} (${p} %)</p><p class="mu">${p>=80?"Exercice validé.":"Il faut 80 % pour valider. Relisez la leçon et réessayez."}</p></div><button class="pri" onclick="quiz(${S.i},'${S.m}')">Recommencer</button><button class="sm" onclick="unit(${S.i},'lesson')">Revoir la leçon</button><button class="sm" onclick="home()">Retour aux unités</button>`}
+home();
+</script></body></html>
